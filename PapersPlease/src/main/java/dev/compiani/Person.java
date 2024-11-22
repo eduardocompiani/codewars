@@ -1,3 +1,5 @@
+package dev.compiani;
+
 import java.util.Map;
 
 public class Person {

@@ -1,53 +1,55 @@
+package dev.compiani;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class GrantOfAsylum {
+public class Passport {
     /*
-        ID#: Y3MNC-TPWQ2
-        NATION: United Federation
-        NAME: Dolanski, Roman
-        DOB: 1933.01.01
-        HEIGHT: 176cm
-        WEIGHT: 71kg
-        EXP: 1983.09.20
+        ID#: GC07D-FU8AR
+        NATION: Arstotzka
+        NAME: Costanza, Josef
+        DOB: 1933.11.28
+        SEX: M
+        ISS: East Grestin
+        EXP: 1983.03.15
      */
 
     public String ID;
     public String nation;
     public String name;
     public Date birthDate;
-    private Integer height;
-    private Integer weight;
+    public String gender;
+    public String iss;
     public Date expiryDate;
 
-    public GrantOfAsylum(String rawData) {
+    public Passport(String rawData) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
 
         String IDRegex = "ID#: (.*)";
         String nationRegex = "NATION: (.*)";
         String nameRegex = "NAME: (.*)";
         String birthDateRegex = "DOB: (\\d+.\\d+.\\d+)";
-        String heightRegex = "HEIGHT: (.*)";
-        String weightRegex = "WEIGHT: (.*)";
+        String genderRegex = "SEX: (.*)";
+        String issRegex = "ISS: (.*)";
         String expiryDateRegex = "EXP: (\\d+.\\d+.\\d+)";
 
         Pattern IDPattern = Pattern.compile(IDRegex);
         Pattern nationPattern = Pattern.compile(nationRegex);
         Pattern namePattern = Pattern.compile(nameRegex);
         Pattern birthDatePattern = Pattern.compile(birthDateRegex);
-        Pattern heightPattern = Pattern.compile(heightRegex);
-        Pattern weightPattern = Pattern.compile(weightRegex);
+        Pattern genderPattern = Pattern.compile(genderRegex);
+        Pattern issPattern = Pattern.compile(issRegex);
         Pattern expiryDatePattern = Pattern.compile(expiryDateRegex);
 
         Matcher IDMatcher = IDPattern.matcher(rawData);
         Matcher nationMatcher = nationPattern.matcher(rawData);
         Matcher nameMatcher = namePattern.matcher(rawData);
         Matcher birthDateMatcher = birthDatePattern.matcher(rawData);
-        Matcher heightMatcher = heightPattern.matcher(rawData);
-        Matcher weightMatcher = weightPattern.matcher(rawData);
+        Matcher genderMatcher = genderPattern.matcher(rawData);
+        Matcher issMatcher = issPattern.matcher(rawData);
         Matcher expiryDateMatcher = expiryDatePattern.matcher(rawData);
 
         if (IDMatcher.find()) {
@@ -70,12 +72,12 @@ public class GrantOfAsylum {
             }
         }
 
-        if (heightMatcher.find()) {
-            this.height = Integer.parseInt(heightMatcher.group(1));
+        if (genderMatcher.find()) {
+            this.gender = genderMatcher.group(1);
         }
 
-        if (weightMatcher.find()) {
-            this.weight = Integer.parseInt(weightMatcher.group(1));
+        if (issMatcher.find()) {
+            this.iss = issMatcher.group(1);
         }
 
         if (expiryDateMatcher.find()) {
@@ -103,12 +105,12 @@ public class GrantOfAsylum {
         return birthDate;
     }
 
-    public Integer getHeight() {
-        return height;
+    public String getGender() {
+        return gender;
     }
 
-    public Integer getWeight() {
-        return weight;
+    public String getIss() {
+        return iss;
     }
 
     public Date getExpiryDate() {
@@ -117,13 +119,13 @@ public class GrantOfAsylum {
 
     @Override
     public String toString() {
-        return "GrantOfAsylum{" +
+        return "Passport{" +
                 "ID='" + ID + '\'' +
                 ", nation='" + nation + '\'' +
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate +
-                ", height=" + height +
-                ", weight=" + weight +
+                ", gender='" + gender + '\'' +
+                ", iss='" + iss + '\'' +
                 ", expiryDate=" + expiryDate +
                 '}';
     }
