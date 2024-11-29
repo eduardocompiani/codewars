@@ -24,4 +24,24 @@ public class Person {
             grantOfAsylum = new GrantOfAsylum(rawData.get("grant_of_asylum"));
         }
     }
+
+    public boolean isCitizen() {
+        return (
+            (passport != null && passport.getNation().equals("Arstotzka"))
+            || (accessPermit != null && accessPermit.getNation().equals("Arstotzka"))
+            || (grantOfAsylum != null && grantOfAsylum.getNation().equals("Arstotzka"))
+        );
+    }
+
+    public AccessPermit getAccessPermit() {
+        return accessPermit;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public GrantOfAsylum getGrantOfAsylum() {
+        return grantOfAsylum;
+    }
 }

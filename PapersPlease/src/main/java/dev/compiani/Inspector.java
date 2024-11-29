@@ -24,9 +24,19 @@ public class Inspector {
     public String inspect(Map<String, String> rawPersonData) {
         Person person = new Person(rawPersonData);
 
-        System.out.println(person);
+        try {
+            checkPassport(person);
+            checkID(person);
+            checkAllowedCountry(person);
+        } catch (RuntimeException e) {
+            return e.getMessage();
+        }
 
-        return "";
+        if (person.isCitizen()) {
+            return "Glory to Arstotzka.";
+        }
+
+        return "Cause no trouble.";
     }
 
     private void processBannedCountriesBulletin(String bulletin) {
@@ -56,6 +66,56 @@ public class Inspector {
         Matcher matcher = pattern.matcher(bulletin);
 
         requirePassport = matcher.find();
+    }
+
+    private String documentRequired(String document) {
+        return "Entry denied: missing required " + document + ".";
+    }
+
+    private void checkPassport(Person person) {
+        if (requirePassport && person.getPassport() == null) {
+            throw new RuntimeException(documentRequired("passport"));
+        }
+    }
+
+    private void checkID(Person person) {
+        List<String> IDs = new ArrayList<>();
+
+        if (person.getPassport() != null) {
+            IDs.add(person.getPassport().getID());
+        }
+
+        if (person.getAccessPermit() != null) {
+            IDs.add(person.getAccessPermit().getID());
+        }
+
+        if (person.getGrantOfAsylum() != null) {
+            IDs.add(person.getGrantOfAsylum().getID());
+        }
+
+        if (!IDs.stream().allMatch(id -> id.equals(IDs.get(0)))) {
+            throw new RuntimeException("Detainment: ID number mismatch.");
+        }
+    }
+
+    private void checkAllowedCountry(Person person) {
+        if (allowedCountries.isEmpty()) {
+            return;
+        }
+
+        if (person.getPassport() != null && allowedCountries.contains(person.getPassport().getNation())) {
+            return;
+        }
+
+        if (person.getAccessPermit() != null && allowedCountries.contains(person.getAccessPermit().getNation())) {
+            return;
+        }
+
+        if (person.getGrantOfAsylum() != null && allowedCountries.contains(person.getGrantOfAsylum().getNation())) {
+            return;
+        }
+
+        throw new RuntimeException("Entry denied: citizen of banned nation.");
     }
 
 }

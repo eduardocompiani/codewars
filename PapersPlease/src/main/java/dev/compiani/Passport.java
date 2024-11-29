@@ -7,16 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Passport {
-    /*
-        ID#: GC07D-FU8AR
-        NATION: Arstotzka
-        NAME: Costanza, Josef
-        DOB: 1933.11.28
-        SEX: M
-        ISS: East Grestin
-        EXP: 1983.03.15
-     */
-
     public String ID;
     public String nation;
     public String name;

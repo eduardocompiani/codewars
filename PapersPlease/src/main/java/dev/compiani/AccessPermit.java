@@ -1,6 +1,5 @@
 package dev.compiani;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,17 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class AccessPermit {
-    /*
-    NAME: Guyovich, Russian
-    NATION: Obristan
-    ID#: TE8M1-V3N7R
-    PURPOSE: TRANSIT
-    DURATION: 14 DAYS
-    HEIGHT: 159cm
-    WEIGHT: 60kg
-    EXP: 1983.07.13
-     */
-
     private String name;
     private String nation;
     private String ID;

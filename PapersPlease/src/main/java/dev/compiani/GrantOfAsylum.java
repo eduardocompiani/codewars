@@ -7,16 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GrantOfAsylum {
-    /*
-        ID#: Y3MNC-TPWQ2
-        NATION: United Federation
-        NAME: Dolanski, Roman
-        DOB: 1933.01.01
-        HEIGHT: 176cm
-        WEIGHT: 71kg
-        EXP: 1983.09.20
-     */
-
     public String ID;
     public String nation;
     public String name;
@@ -32,8 +22,8 @@ public class GrantOfAsylum {
         String nationRegex = "NATION: (.*)";
         String nameRegex = "NAME: (.*)";
         String birthDateRegex = "DOB: (\\d+.\\d+.\\d+)";
-        String heightRegex = "HEIGHT: (.*)";
-        String weightRegex = "WEIGHT: (.*)";
+        String heightRegex = "HEIGHT: (.*)cm";
+        String weightRegex = "WEIGHT: (.*)kg";
         String expiryDateRegex = "EXP: (\\d+.\\d+.\\d+)";
 
         Pattern IDPattern = Pattern.compile(IDRegex);
