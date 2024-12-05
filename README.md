@@ -10,6 +10,7 @@ In this project, I'm challenging myself to complete at least one kata a day and 
 | Java       | [Split Strings](https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/java)                       | 6 kyu                        | Done ✅      |
 | Java       | [Build Tower](https://www.codewars.com/kata/576757b1df89ecf5bd00073b/java)                         | 6 kyu                        | Done ✅      |
 | Java       | [Break camelCase](https://www.codewars.com/kata/5208f99aee097e6552000148/java)                     | 6 kyu                        | Done ✅      |
+| Java       | [Create Phone Number](https://www.codewars.com/kata/525f50e3b73515a6db000b83/java)                 | 6 kyu                        | Done ✅      |
 | Java       | [Count characters in your string](https://www.codewars.com/kata/52efefcbcdf57161d4000091/java)     | 6 kyu                        | Done ✅      |
 | Java       | [Pete, the baker](https://www.codewars.com/kata/525c65e51bf619685c000059/java)                     | 5 kyu                        | Done ✅      |
 | Java       | [Papers, Please](https://www.codewars.com/kata/59d582cafbdd0b7ef90000a0)                           | 3 kyu                        | In-Progress |
